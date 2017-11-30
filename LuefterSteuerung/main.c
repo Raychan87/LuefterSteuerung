@@ -8,9 +8,8 @@
 #include <avr/io.h>
 
 
-/* Replace with your library code */
-int myfunc(void)
+void main(void)
 {
-	return 0;
+	
 }
 
