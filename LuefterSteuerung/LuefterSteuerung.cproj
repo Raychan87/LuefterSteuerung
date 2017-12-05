@@ -122,10 +122,22 @@
     </ToolchainSettings>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="adc_wandler.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="adc_wandler.h">
+      <SubType>compile</SubType>
+    </Compile>
     <Compile Include="init.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="temp.c">
+      <SubType>compile</SubType>
+    </Compile>
+    <Compile Include="temp.h">
       <SubType>compile</SubType>
     </Compile>
   </ItemGroup>

@@ -37,7 +37,9 @@ SUBDIRS :=
 
 # Add inputs and outputs from these tool invocations to the build variables 
 C_SRCS +=  \
-../main.c
+../adc_wandler.c \
+../main.c \
+../temp.c
 
 
 PREPROCESSING_SRCS += 
@@ -47,16 +49,24 @@ ASM_SRCS +=
 
 
 OBJS +=  \
-main.o
+adc_wandler.o \
+main.o \
+temp.o
 
 OBJS_AS_ARGS +=  \
-main.o
+adc_wandler.o \
+main.o \
+temp.o
 
 C_DEPS +=  \
-main.d
+adc_wandler.d \
+main.d \
+temp.d
 
 C_DEPS_AS_ARGS +=  \
-main.d
+adc_wandler.d \
+main.d \
+temp.d
 
 OUTPUT_FILE_PATH +=libLuefterSteuerung.a
 
@@ -72,6 +82,10 @@ LINKER_SCRIPT_DEP+=
 
 
 # AVR32/GNU C Compiler
+
+
+
+
 
 
 

@@ -3,7 +3,7 @@
 *********************************************************************************
 File: init.h
 Version: 0.1
-Author: RayChan
+Author: David "RayChan" Rückert
 Beschreibung:
 
 
@@ -37,6 +37,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 // ----------------------------------------------------------------------------//
 
 
+
 // ----------------------------------------------------------------------------//
 //	Globale Variablen:
 // ----------------------------------------------------------------------------//
@@ -50,6 +51,8 @@ Der Verwendete Mikroprozessor dieses Projektes:
 	#include <avr\io.h>									//AVR Register und Konstantendefinitionen
 	#include <avr\interrupt.h>							//AVR Interrupt Vektoren
 	#include <avr\portpins.h>							//Definierte Port Beschriftungen
+    #include "temp.h"                                   //Temperatur Sensor Funktion
+    #include "adc_wandler.h"                            //ADC Wandler
 	//#include <avr\pgmspace.h>							//LCD benötigt
 	//#include <util\delay.h>								//Wartezeit schleife
 	//#include <stdint.h>									//Strings

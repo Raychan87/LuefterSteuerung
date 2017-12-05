@@ -45,10 +45,6 @@ Dies ist die Datei mit der Main Funktion.
 
 
 
-
-
-
-
 		return 0;
 	}
 
