@@ -92,16 +92,17 @@ Für ATmega328P und Attiny13
 	unsigned int ADC_lesen(unsigned char Kanal)		//aus bestimmten Kanal (ADC PIN) Analogwert auslesen
 	{
         #ifdef ATMEGA328P
-		    ADMUX = (ADMUX & ~ (0x1F))|(Kanal & 0x1F);	//Kanal waehlen
-		    ADCSRA |= (1<<ADSC);						//eine Wandlung "single conversion"
-		    while (ADCSRA & (1 << ADSC));				//auf Abschluss der Konvertierung warten
-
-		    return ADCW;								//Analogen Wert zurück geben
+		    ADMUX = (ADMUX & ~(0x1F)) | (Kanal & 0x1F);	//Kanal waehlen
         #endif
 
         #ifdef ATTINY13
-            ADMUX = (ADMUX & ~ (0xF0))|(Kanal & 0x03);	//Kanal waehlen
+            ADMUX = (ADMUX & ~(0x03)) | (Kanal & 0x03);	//Kanal waehlen
         #endif
+
+        ADCSRA |= (1<<ADSC);						//eine Wandlung "single conversion"
+        while (ADCSRA & (1 << ADSC));				//auf Abschluss der Konvertierung warten
+
+        return ADCW;								//Analogen Wert zurück geben
 	}
 
 // ----------------------------------------------------------------------------//

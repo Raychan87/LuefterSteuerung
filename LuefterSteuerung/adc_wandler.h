@@ -64,4 +64,4 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 // 	Ende
 // ----------------------------------------------------------------------------//
 
-#endif /* ADC_WANDLER_H_ /*
+#endif /* ADC_WANDLER_H_ */

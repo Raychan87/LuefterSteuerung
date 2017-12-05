@@ -3,10 +3,10 @@
 *********************************************************************************
 File: temp.c
 Version: 1.0
-Author: D. Rückert, R. Malert
-Beschreibung:  
+Author: David "RayChan" Rückert
+Beschreibung:
 
-In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen                                                              
+In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -36,7 +36,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 //							float temp(void)
 // ----------------------------------------------------------------------------//
 //	* Übergabeparameter: -
-//	* Rückgabewert	   : Die Funktion gibt den Temperaturwert als Float und in 
+//	* Rückgabewert	   : Die Funktion gibt den Temperaturwert als Float und in
 //						 Grad zurück
 //	* Beschreibung:
 //
@@ -53,7 +53,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 	{
 		float merker_temp = 0;					//Variable für Temperatur speichern
 		unsigned char i;
-		
+
 		for (i = 1; i <= 3 ; i++)				//3 Messwerte einholen
 		{
 			/*	Temperatur auslesen und Formel für genaue Kalibrierung der Temperaturwerte */
@@ -63,7 +63,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 		merker_temp = merker_temp / 3;			//Durchschnitt der 3 Temperaturwerte bilden
 		return merker_temp;						//Temperaturwert ausgeben
 	}
-	
+
 // ----------------------------------------------------------------------------//
 // Ende
 // ----------------------------------------------------------------------------//

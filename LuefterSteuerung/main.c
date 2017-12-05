@@ -37,13 +37,12 @@ Dies ist die Datei mit der Main Funktion.
 
 	int main(void)
 	{
+        temp_init();
 
-
-
-
-
-
-
+        do
+        {
+            tmp = temp();
+        } while (1);
 
 		return 0;
 	}

@@ -54,7 +54,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
     #include "temp.h"                                   //Temperatur Sensor Funktion
     #include "adc_wandler.h"                            //ADC Wandler
 	//#include <avr\pgmspace.h>							//LCD benötigt
-	//#include <util\delay.h>								//Wartezeit schleife
+	#include <util\delay.h>								//Wartezeit schleife
 	//#include <stdint.h>									//Strings
 	//#include <stdio.h>									//sprintf()
 

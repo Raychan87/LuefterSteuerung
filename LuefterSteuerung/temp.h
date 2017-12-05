@@ -3,13 +3,13 @@
 *********************************************************************************
 File: temp.h
 Version: 1.0
-Author: D. Rückert, R. Malert
-Beschreibung:  
+Author: David "RayChan" Rückert
+Beschreibung:
 
 Hier werden die Temperatur Sensorpins und die Analoge Referenzspannung angegeben.
 Sowie Funktionsprototypen für temp.c.
 
-Hier wird der Temperaturfühler MCP9700 verwendet                                                             
+Hier wird der Temperaturfühler MCP9700 verwendet
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -18,7 +18,7 @@ Hier wird der Temperaturfühler MCP9700 verwendet
 
 #ifndef TEMP_H_
 	#define TEMP_H_
-	
+
 // ----------------------------------------------------------------------------//
 //	Header-Dateien:
 // ----------------------------------------------------------------------------//
@@ -29,10 +29,11 @@ Hier wird der Temperaturfühler MCP9700 verwendet
 // 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-	#define TEMP_DDR		DDRC						//DDR festlegen
-	#define TEMP_PORT		PORTC						//Port festlegen
-	#define TEMP_PIN		PC0							//Pin festlegen
+	#define TEMP_DDR		DDRB						//DDR festlegen
+	#define TEMP_PORT		PORTB						//Port festlegen
+	#define TEMP_PIN		PB4							//Pin festlegen
 	#define REF_MODI		AVCC_REFERENZ				//Referenz Modus wählen
+    #define VREF            5                           //Referenz Spannung
 	//AREF_Referenz; AVCC_Referenz; Intern_Referenz
 
 // ----------------------------------------------------------------------------//
