@@ -1,5 +1,5 @@
 /********************************************************************************
- Abschlussprojekt "Entwicklung, Aufbau und Inbetriebnahme einer Brandmeldeanlage"
+Temperatur Funktion
 *********************************************************************************
 File: temp.h
 Version: 1.0

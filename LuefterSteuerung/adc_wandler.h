@@ -1,5 +1,5 @@
 /********************************************************************************
- Abschlussprojekt "Entwicklung, Aufbau und Inbetriebnahme einer Brandmeldeanlage"
+ ADC_Wandler Funktion
 *********************************************************************************
 File: adc_wandler.h
 Version: 1.5
