@@ -2,7 +2,7 @@
  Lüfter Steuerung
 *********************************************************************************
 File: init.h
-Version: 0.1
+Version: 0.2
 Author: RayChan
 Beschreibung:
 

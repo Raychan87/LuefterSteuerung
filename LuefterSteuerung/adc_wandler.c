@@ -2,7 +2,7 @@
  ADC_Wandler Funktion
 *********************************************************************************
 File:
-Version: 1.5
+Version: 1.6
 Author: RayChan
 Beschreibung:
 
