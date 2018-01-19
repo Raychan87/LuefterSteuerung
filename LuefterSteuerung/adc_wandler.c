@@ -7,7 +7,7 @@ Author: RayChan
 Beschreibung:
 
 Die Datei enthält die Funktionen der ADC-Routine.
-Für ATmega328P und Attiny13
+Für ATmega328P, ATtiny44 und ATtiny13
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -49,24 +49,39 @@ Für ATmega328P und Attiny13
 		    }
         #endif
 
+        #ifdef ATTINY44
+            if (referenzspg == AREF_REFERENZ)
+             {
+                 ADMUX = (1<<REFS0);                    //AREF Referenz
+             }
+             if (referenzspg == AVCC_REFERENZ)
+            {
+                ADMUX = 0x00;                           //AVCC als Referenzspannung nutzen
+            }
+            if (referenzspg == INTERN_REFERENZ)
+            {
+                ADMUX = (1<<REFS1);                     //Internal 1.1V	Referenz
+            }
+        #endif
+
         #ifdef ATTINY13
             if (referenzspg == INTERN_REFERENZ)
             {
-                ADMUX = (1<<REFS0);
+                ADMUX = (1<<REFS0);                     //Internal 1.1V Referenz
             }
             if (referenzspg == AVCC_REFERENZ)
             {
-                ADMUX = 0x00;
+                ADMUX = 0x00;                           //AVCC als Referenzspannung nutzen
             }
         #endif
-		ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);	//Frequenzvorteiler 128 ==> 16Mhz/128 = 125000Khz (sollte zwischen 50kHz-200kHz liegen)
-		ADCSRA |= (1<<ADEN);						//ADC aktivieren
+		ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);	    //Frequenzvorteiler 128 ==> 16Mhz/128 = 125000Khz (sollte zwischen 50kHz-200kHz liegen)
+		ADCSRA |= (1<<ADEN);						    //ADC aktivieren
 
 		/* nach Aktivieren des ADC wird ein "Dummy-Readout" empfohlen, man liest
 		 also einen Wert und verwirft diesen, um den ADC "warmlaufen zu lassen" */
 
-		ADCSRA |= (1<<ADSC);						//eine ADC-Wandlung
-		while (ADCSRA & (1<<ADSC));					//auf Abschluss der Konvertierung warten
+		ADCSRA |= (1<<ADSC);						    //eine ADC-Wandlung
+		while (ADCSRA & (1<<ADSC));					    //auf Abschluss der Konvertierung warten
 
 		/* ADCW muss einmal gelesen werden, sonst wird Ergebnis der nächsten
 		Wandlung nicht übernommen. */
@@ -93,6 +108,10 @@ Für ATmega328P und Attiny13
 	{
         #ifdef ATMEGA328P
 		    ADMUX = (ADMUX & ~(0x1F)) | (Kanal & 0x1F);	//Kanal waehlen
+        #endif
+
+        #ifdef ATTINY44
+            ADMUX = (ADMUX & ~(0x3F)) | (Kanal & 0x3F);//Kanal waehlen
         #endif
 
         #ifdef ATTINY13

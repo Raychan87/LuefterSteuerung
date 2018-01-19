@@ -44,6 +44,7 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 	#define INTERN_REFERENZ 2							//Internal 1.1V als Referenz
     #define ATTINY13
     //#define ATMEGA328P
+    //#define ATTINY44
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
