@@ -3,7 +3,7 @@
 *********************************************************************************
 File: init.h
 Version: 0.1
-Author: David "RayChan" Rückert
+Author: RayChan
 Beschreibung:
 
 

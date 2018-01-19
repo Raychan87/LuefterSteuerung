@@ -3,7 +3,7 @@ Temperatur Funktion
 *********************************************************************************
 File: temp.c
 Version: 1.0
-Author: David "RayChan" Rückert
+Author: RayChan
 Beschreibung:
 
 In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen

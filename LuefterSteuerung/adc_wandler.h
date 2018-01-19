@@ -3,7 +3,7 @@
 *********************************************************************************
 File: adc_wandler.h
 Version: 1.5
-Author: David "RayChan" Rückert
+Author: RayChan
 Beschreibung:
 
 Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.

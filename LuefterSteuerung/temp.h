@@ -3,7 +3,7 @@ Temperatur Funktion
 *********************************************************************************
 File: temp.h
 Version: 1.0
-Author: David "RayChan" Rückert
+Author: RayChan
 Beschreibung:
 
 Hier werden die Temperatur Sensorpins und die Analoge Referenzspannung angegeben.

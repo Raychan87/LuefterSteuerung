@@ -3,7 +3,7 @@
 *********************************************************************************
 File:
 Version: 1.5
-Author: David "RayChan" Rückert
+Author: RayChan
 Beschreibung:
 
 Die Datei enthält die Funktionen der ADC-Routine.
