@@ -6,7 +6,7 @@ Version: 1.0
 Author: RayChan
 Beschreibung:
 
-In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
+In der Datei ist fÃ¼r den TemperaturfÃ¼hler MCP9700 die benÃ¶tigten Funktionen
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -16,52 +16,52 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 	#include "temp.h"
 
 // ----------------------------------------------------------------------------//
-//							void temp_init(void)
+//				void temp_init(void)
 // ----------------------------------------------------------------------------//
-//	* Übergabeparameter: -
-//	* Rückgabewert	   : -
+//	* Ãœbergabeparameter: -
+//	* RÃ¼ckgabewert	   : -
 //
 //	* Beschreibung:
 //
 //	Diese Funktion stellt den Eingangs Pin ein und startet den AD-Wandler
 // ----------------------------------------------------------------------------//
 
-	void temp_init(void)						//Temperaturfühler Vorbereitung
+	void temp_init(void)				//TemperaturfÃ¼hler Vorbereitung
 	{
-		TEMP_DDR &=	~(1 << TEMP_PIN);			//Pin als Eingang schalten
-		adc_init(REF_MODI);						//AD-Wandler einschalten und Festlegung der Referenzspg.
+		TEMP_DDR &=	~(1 << TEMP_PIN);	//Pin als Eingang schalten
+		adc_init(REF_MODI);			//AD-Wandler einschalten und Festlegung der Referenzspg.
 	}
 
 // ----------------------------------------------------------------------------//
-//							float temp(void)
+//				float temp(void)
 // ----------------------------------------------------------------------------//
-//	* Übergabeparameter: -
-//	* Rückgabewert	   : Die Funktion gibt den Temperaturwert als Float und in
-//						 Grad zurück
+//	* Ãœbergabeparameter: -
+//	* RÃ¼ckgabewert	   : Die Funktion gibt den Temperaturwert als Float und in
+//			     Grad zurÃ¼ck
 //	* Beschreibung:
 //
-//	In der Funktion werden 3 Analoge Werte vom Temperaturfühler eingelesen und mit
+//	In der Funktion werden 3 Analoge Werte vom TemperaturfÃ¼hler eingelesen und mit
 //	einer Kalibrierten Formel auf der Seite:
-//  http://www.instructables.com/id/How-to-calibrate-a-cheap-temperature-sensor/step3/Calibration/
+//  	http://www.instructables.com/id/How-to-calibrate-a-cheap-temperature-sensor/step3/Calibration/
 //	(Stand 12/2016) Berechnet.
-//  Aus diesen wird noch der Mittelwert gebildet und in Grad in Floatwert zurückgegeben
+//  	Aus diesen wird noch der Mittelwert gebildet und in Grad in Floatwert zurÃ¼ckgegeben
 //
 //
 // ----------------------------------------------------------------------------//
 
-	float temp(void)							//Temperatur einholen
+	float temp(void)				//Temperatur einholen
 	{
-		float merker_temp = 0;					//Variable für Temperatur speichern
+		float merker_temp = 0;			//Variable fÃ¼r Temperatur speichern
 		unsigned char i;
 
-		for (i = 1; i <= 3 ; i++)				//3 Messwerte einholen
+		for (i = 1; i <= 3 ; i++)		//3 Messwerte einholen
 		{
-			/*	Temperatur auslesen und Formel für genaue Kalibrierung der Temperaturwerte */
+			/*	Temperatur auslesen und Formel fÃ¼r genaue Kalibrierung der Temperaturwerte */
 			merker_temp = merker_temp + (((float)ADC_lesen(TEMP_PIN)*VREF/1024)-0.4802)/0.01;	//0.4802
-			_delay_ms(20);						//Kurze Pause
+			_delay_ms(20);			//Kurze Pause
 		}
-		merker_temp = merker_temp / 3;			//Durchschnitt der 3 Temperaturwerte bilden
-		return merker_temp;						//Temperaturwert ausgeben
+		merker_temp = merker_temp / 3;		//Durchschnitt der 3 Temperaturwerte bilden
+		return merker_temp;			//Temperaturwert ausgeben
 	}
 
 // ----------------------------------------------------------------------------//
