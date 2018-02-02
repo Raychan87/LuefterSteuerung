@@ -6,8 +6,8 @@ Version: 1.6
 Author: RayChan
 Beschreibung:
 
-Die Datei enthält die Funktionen der ADC-Routine.
-Für ATmega328P, ATtiny44 und ATtiny13
+Die Datei enthÃ¤lt die Funktionen der ADC-Routine.
+FÃ¼r ATmega328P, ATtiny44 und ATtiny13
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -19,12 +19,12 @@ Für ATmega328P, ATtiny44 und ATtiny13
 // ----------------------------------------------------------------------------//
 //							void adc_init(unsigned char referenzspg)
 // ----------------------------------------------------------------------------//
-//	* Übergabeparameter: Die Art der benutzten Referenzspannung in Ziffern
+//	* Ãœbergabeparameter: Die Art der benutzten Referenzspannung in Ziffern
 //                       referenzspg:
 //							0 = AREF als Referenz
 //							1 = AVcc als Referenz with external capacitor at AREF pin
 //							2 = Internal 1.1V als Referenz
-//	* Rückgabewert	   : -
+//	* RÃ¼ckgabewert	   : -
 //
 //	* Beschreibung:
 //
@@ -35,17 +35,17 @@ Für ATmega328P, ATtiny44 und ATtiny13
 	void adc_init( unsigned char referenzspg)
 	{
         #ifdef ATMEGA328P
-		    if (referenzspg == AREF_REFERENZ)
+		   if (referenzspg == AREF_REFERENZ)
 		    {
-			    ADMUX = 0x00;							//AREF Referenz
+			    ADMUX = 0x00;			//AREF Referenz
 		    }
 		    if (referenzspg == AVCC_REFERENZ)
 		    {
-			    ADMUX = (1<<REFS0);						//AVCC als Referenzspannung nutzen
+			    ADMUX = (1<<REFS0);			//AVCC als Referenzspannung nutzen
 		    }
 		    if (referenzspg == INTERN_REFERENZ)
 		    {
-			    ADMUX = (1<<REFS0)|(1<<REFS1);			//Internal 1.1V	Referenz
+			    ADMUX = (1<<REFS0)|(1<<REFS1);	//Internal 1.1V	Referenz
 		    }
         #endif
 
@@ -74,32 +74,32 @@ Für ATmega328P, ATtiny44 und ATtiny13
                 ADMUX = 0x00;                           //AVCC als Referenzspannung nutzen
             }
         #endif
-		ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);	    //Frequenzvorteiler 128 ==> 16Mhz/128 = 125000Khz (sollte zwischen 50kHz-200kHz liegen)
-		ADCSRA |= (1<<ADEN);						    //ADC aktivieren
+		ADCSRA = (1<<ADPS2)|(1<<ADPS1)|(1<<ADPS0);	//Frequenzvorteiler 128 ==> 16Mhz/128 = 125000Khz (sollte zwischen 50kHz-200kHz liegen)
+		ADCSRA |= (1<<ADEN);				//ADC aktivieren
 
 		/* nach Aktivieren des ADC wird ein "Dummy-Readout" empfohlen, man liest
 		 also einen Wert und verwirft diesen, um den ADC "warmlaufen zu lassen" */
 
-		ADCSRA |= (1<<ADSC);						    //eine ADC-Wandlung
-		while (ADCSRA & (1<<ADSC));					    //auf Abschluss der Konvertierung warten
+		ADCSRA |= (1<<ADSC);				//eine ADC-Wandlung
+		while (ADCSRA & (1<<ADSC));			//auf Abschluss der Konvertierung warten
 
-		/* ADCW muss einmal gelesen werden, sonst wird Ergebnis der nächsten
-		Wandlung nicht übernommen. */
+		/* ADCW muss einmal gelesen werden, sonst wird Ergebnis der nÃ¤chsten
+		Wandlung nicht Ã¼bernommen. */
 	}
 
 // ----------------------------------------------------------------------------//
 //				unsigned char ADC_lesen(unsigned char Kanal)
 // ----------------------------------------------------------------------------//
-//	* Übergabeparameter: Der Kanal ist der ADC PIN als Ziffer welcher Analog
-//						 eingelesen werden soll.
-//	* Rückgabewert	   : Der vom ADC Pin angegebene Analogwert wird als unsigned
-//						 char zurückgegeben
+//	* Ãœbergabeparameter: Der Kanal ist der ADC PIN als Ziffer welcher Analog
+//			     eingelesen werden soll.
+//	* RÃ¼ckgabewert	   : Der vom ADC Pin angegebene Analogwert wird als unsigned
+//			     char zurÃ¼ckgegeben
 //
 //	* Beschreibung:
 //
-//	Die Funktionsroutine ist dafür da einen Analogen Wert von einen Bestimmten
-//  Pin auszulesen und zurückzugeben.
-//  Er bleibt solange in der Funktionsroutine bis eine Wandlung abgeschlossen ist.
+//	Die Funktionsroutine ist dafÃ¼r da einen Analogen Wert von einen Bestimmten
+//  	Pin auszulesen und zurÃ¼ckzugeben.
+//  	Er bleibt solange in der Funktionsroutine bis eine Wandlung abgeschlossen ist.
 //
 // ----------------------------------------------------------------------------//
 
@@ -111,17 +111,17 @@ Für ATmega328P, ATtiny44 und ATtiny13
         #endif
 
         #ifdef ATTINY44
-            ADMUX = (ADMUX & ~(0x3F)) | (Kanal & 0x3F);//Kanal waehlen
+            ADMUX = (ADMUX & ~(0x3F)) | (Kanal & 0x3F);		//Kanal waehlen
         #endif
 
         #ifdef ATTINY13
-            ADMUX = (ADMUX & ~(0x03)) | (Kanal & 0x03);	//Kanal waehlen
+            ADMUX = (ADMUX & ~(0x03)) | (Kanal & 0x03);		//Kanal waehlen
         #endif
 
-        ADCSRA |= (1<<ADSC);						//eine Wandlung "single conversion"
+        ADCSRA |= (1<<ADSC);					//eine Wandlung "single conversion"
         while (ADCSRA & (1 << ADSC));				//auf Abschluss der Konvertierung warten
 
-        return ADCW;								//Analogen Wert zurück geben
+        return ADCW;						//Analogen Wert zurÃ¼ck geben
 	}
 
 // ----------------------------------------------------------------------------//
