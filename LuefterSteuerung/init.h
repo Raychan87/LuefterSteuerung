@@ -1,5 +1,5 @@
 /********************************************************************************
- Lüfter Steuerung
+ LÃ¼fter Steuerung
 *********************************************************************************
 File: init.h
 Version: 0.2
@@ -29,8 +29,8 @@ Der Verwendete Mikroprozessor dieses Projektes:
 // Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-	#define F_CPU				16000000				//CPU Takt: 16MHz
-	//#define BAUDRATE			9600					//Baudrate
+	#define F_CPU				16000000	//CPU Takt: 16MHz
+	//#define BAUDRATE			9600		//Baudrate
 
 // ----------------------------------------------------------------------------//
 // Definition:
@@ -48,15 +48,18 @@ Der Verwendete Mikroprozessor dieses Projektes:
 //	Header-Dateien:
 // ----------------------------------------------------------------------------//
 
-	#include <avr\io.h>									//AVR Register und Konstantendefinitionen
-	#include <avr\interrupt.h>							//AVR Interrupt Vektoren
-	#include <avr\portpins.h>							//Definierte Port Beschriftungen
-    #include "temp.h"                                   //Temperatur Sensor Funktion
-    #include "adc_wandler.h"                            //ADC Wandler
-	//#include <avr\pgmspace.h>							//LCD benötigt
-	#include <util\delay.h>								//Wartezeit schleife
-	//#include <stdint.h>									//Strings
-	//#include <stdio.h>									//sprintf()
+	#include <avr\io.h>					//AVR Register und Konstantendefinitionen
+	#include <avr\interrupt.h>				//AVR Interrupt Vektoren
+	#include <avr\portpins.h>				//Definierte Port Beschriftungen
+	#include <util\delay.h>					//Wartezeit Schleife
+    	#include "temp.h"                                   	//Temperatur Sensor Funktion
+    	#include "adc_wandler.h"                            	//ADC Wandler
+	#include "fan.h"					//LÃ¼fter Funktionen
+	#include "pwm.h"					//Timer (PWM) Funktion
+
+	//#include <avr\pgmspace.h>				//LCD benÃ¶tigt
+	//#include <stdint.h>					//Strings
+	//#include <stdio.h>					//sprintf()
 
 // ----------------------------------------------------------------------------//
 // 	Ende
