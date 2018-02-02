@@ -7,9 +7,9 @@ Author: RayChan
 Beschreibung:
 
 Hier werden die Temperatur Sensorpins und die Analoge Referenzspannung angegeben.
-Sowie Funktionsprototypen für temp.c.
+Sowie Funktionsprototypen fÃ¼r temp.c.
 
-Hier wird der Temperaturfühler MCP9700 verwendet
+Hier wird der TemperaturfÃ¼hler MCP9700 verwendet
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -29,19 +29,19 @@ Hier wird der Temperaturfühler MCP9700 verwendet
 // 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-	#define TEMP_DDR		DDRB						//DDR festlegen
-	#define TEMP_PORT		PORTB						//Port festlegen
-	#define TEMP_PIN		PB4							//Pin festlegen
-	#define REF_MODI		AVCC_REFERENZ				//Referenz Modus wählen
-    #define VREF            5                           //Referenz Spannung
+	#define TEMP_DDR		DDRB		//DDR festlegen
+	#define TEMP_PORT		PORTB		//Port festlegen
+	#define TEMP_PIN		PB4		//Pin festlegen
+	#define REF_MODI		AVCC_REFERENZ	//Referenz Modus wÃ¤hlen
+    	#define VREF            5                   	//Referenz Spannung
 	//AREF_Referenz; AVCC_Referenz; Intern_Referenz
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-	extern void temp_init(void);						//Temperaturmessung initalisierung und ADC starten
-	extern float temp(void);							//Gibt den Fertig berechneten Temperaturwert in Float zurück
+	extern void temp_init(void);			//Temperaturmessung initalisierung und ADC starten
+	extern float temp(void);			//Gibt den Fertig berechneten Temperaturwert in Float zurÃ¼ck
 
 // ----------------------------------------------------------------------------//
 // 	Ende
