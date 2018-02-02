@@ -6,7 +6,7 @@ Version: 1.6
 Author: RayChan
 Beschreibung:
 
-Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
+Hier sind die Difinitionen und Funktionsprototypen fÃ¼r ADC-Routinen.
 
 // 10-Bit Analog Digital Wandler //
 
@@ -17,7 +17,7 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 			1 = AVcc als Referenz with external capacitor at AREF pin
 			2 = Internal 1.1V als Referenz
 	- ADC_lesen_einzel(Kanal)
-		- Kanal:	ADC Pin wählen
+		- Kanal:	ADC Pin wÃ¤hlen
 
 ********************************************************************************/
 
@@ -39,12 +39,12 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 // 	Definition:
 // ----------------------------------------------------------------------------//
 
-	#define AREF_REFERENZ 0								//AREF als Referenz
-	#define AVCC_REFERENZ 1								//AVcc als Referenz with external capacitor at AREF pin
-	#define INTERN_REFERENZ 2							//Internal 1.1V als Referenz
-    #define ATTINY13
-    //#define ATMEGA328P
-    //#define ATTINY44
+	#define AREF_REFERENZ 0					//AREF als Referenz
+	#define AVCC_REFERENZ 1					//AVcc als Referenz with external capacitor at AREF pin
+	#define INTERN_REFERENZ 2				//Internal 1.1V als Referenz
+    	#define ATTINY13
+    	//#define ATMEGA328P
+    	//#define ATTINY44
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
@@ -56,7 +56,7 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 		1 = AVcc als Referenz mit externen Kondensator am AREF pin
 		2 = Internal 1.1V als Referenz
 	*/
-	extern unsigned int ADC_lesen(unsigned char Kanal);	//Gibt den Analogenwert als INT-Wert zurück
+	extern unsigned int ADC_lesen(unsigned char Kanal);	//Gibt den Analogenwert als INT-Wert zurÃ¼ck
 	/* Kanal:
 		ADC Pin angeben
 	*/
