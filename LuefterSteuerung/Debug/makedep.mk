@@ -4,7 +4,11 @@
 
 adc_wandler.c
 
+fan.c
+
 main.c
+
+pwm.c
 
 temp.c
 
