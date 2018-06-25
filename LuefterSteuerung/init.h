@@ -2,7 +2,7 @@
  Lüfter Steuerung
 *********************************************************************************
 File: init.h
-Version: 0.2
+Version: 0.3
 Author: RayChan
 Beschreibung:
 
@@ -52,7 +52,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 	#include <avr\interrupt.h>				//AVR Interrupt Vektoren
 	#include <avr\portpins.h>				//Definierte Port Beschriftungen
 	#include <util\delay.h>					//Wartezeit Schleife
-    	#include "temp.h"                                   	//Temperatur Sensor Funktion
+    	#include "temp_mcp9700.h"                              	//Temperatur Sensor MCP9700 Funktion
     	#include "adc_wandler.h"                            	//ADC Wandler
 	#include "fan.h"					//Lüfter Funktionen
 	#include "pwm.h"					//Timer (PWM) Funktion
