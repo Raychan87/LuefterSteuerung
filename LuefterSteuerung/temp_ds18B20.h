@@ -2,8 +2,8 @@
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp_mcp9700.h
-Version: 1.1
+File: temp_ds18B20.h
+Version: 0.1
 Author: RayChan
 Für: Temperatur Sensor DS18B20
 Beschreibung:
