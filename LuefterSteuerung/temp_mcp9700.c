@@ -1,8 +1,8 @@
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp.c
-Version: 1.0
+File: temp_mcp9700.c
+Version: 1.1
 Author: RayChan
 Beschreibung:
 
@@ -13,7 +13,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 //	Header-Dateien:
 // ----------------------------------------------------------------------------//
 
-	#include "temp.h"
+	#include "temp_mcp9700.h"
 
 // ----------------------------------------------------------------------------//
 //				void temp_init(void)
@@ -26,10 +26,10 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 //	Diese Funktion stellt den Eingangs Pin ein und startet den AD-Wandler
 // ----------------------------------------------------------------------------//
 
-	void temp_init(void)				//Temperaturfühler Vorbereitung
+	void temp_mcp_init(void)			//Temperaturfühler Vorbereitung
 	{
-		TEMP_DDR &=	~(1 << TEMP_PIN);	//Pin als Eingang schalten
-		adc_init(REF_MODI);			//AD-Wandler einschalten und Festlegung der Referenzspg.
+		TEMP_MCP_DDR &=	~(1 << TEMP_MCP_PIN);	//Pin als Eingang schalten
+		adc_init(MCP_REF_MODI);			//AD-Wandler einschalten und Festlegung der Referenzspg.
 	}
 
 // ----------------------------------------------------------------------------//
@@ -49,7 +49,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 //
 // ----------------------------------------------------------------------------//
 
-	float temp(void)				//Temperatur einholen
+	float temp_mcp(void)				//Temperatur einholen
 	{
 		float merker_temp = 0;			//Variable für Temperatur speichern
 		unsigned char i;
@@ -57,7 +57,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 		for (i = 1; i <= 3 ; i++)		//3 Messwerte einholen
 		{
 			/*	Temperatur auslesen und Formel für genaue Kalibrierung der Temperaturwerte */
-			merker_temp = merker_temp + (((float)ADC_lesen(TEMP_PIN)*VREF/1024)-0.4802)/0.01;	//0.4802
+			merker_temp = merker_temp + (((float)ADC_lesen(TEMP_MCP_PIN)*VREF/1024)-0.4802)/0.01;	//0.4802
 			_delay_ms(20);			//Kurze Pause
 		}
 		merker_temp = merker_temp / 3;		//Durchschnitt der 3 Temperaturwerte bilden
