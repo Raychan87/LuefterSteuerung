@@ -29,12 +29,12 @@ Hier wird der Temperaturfühler MCP9700 verwendet
 // 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-	#define TEMP_MCP_DDR		DDRB		//DDR festlegen
-	#define TEMP_MCP_PORT		PORTB		//Port festlegen
-	#define TEMP_MCP_PIN		PB4		//Pin festlegen
+	#define TEMP_MCP_DDR		DDRB			//DDR festlegen
+	#define TEMP_MCP_PORT		PORTB			//Port festlegen
+	#define TEMP_MCP_PIN		PB4				//Pin festlegen
 	#define MCP_REF_MODI		AVCC_REFERENZ	//Referenz Modus wählen
 	//AREF_Referenz; AVCC_Referenz; Intern_Referenz
-    	#define MCP_VREF	        5             	//Referenz Spannung
+    #define MCP_VREF	        5             	//Referenz Spannung
 	
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:

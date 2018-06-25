@@ -42,7 +42,7 @@ Beschreibung:
 
 	int main(void)
 	{
-        temp_init();
+        temp_mcp_init();
 
         do
         {

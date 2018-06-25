@@ -23,16 +23,16 @@ Sowie Funktionsprototypen für temp.c.
 //	Header-Dateien:
 // ----------------------------------------------------------------------------//
 
-    #include <init.h>
+    #include "init.h"
   
 // ----------------------------------------------------------------------------//
 // 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-    #define TEMP_DS_DDR		DDRB	    //DDR festlegen
-    #define TEMP_DS_PORT	PORTB	    //Port festlegen
-    #define TEMP_DS_PIN		PB4	    //Pin festlegen
-    #define TEMP_DS_PIN_MASK    0b00001000 //Pin Maske festlegen
+    #define TEMP_DS_DDR			DDRB			//DDR festlegen
+    #define TEMP_DS_PORT		PORTB			//Port festlegen
+    #define TEMP_DS_PIN			PB4				//Pin festlegen
+    #define TEMP_DS_PIN_MASK    0b00001000		//Pin Maske festlegen
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:

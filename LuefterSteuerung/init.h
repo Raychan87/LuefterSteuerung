@@ -38,7 +38,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 	
 	//Mikrocontroller Auswahl (Nur ein MC auswählen!!!)
 	#define ATTINY13
-    	//#define ATMEGA328P
+    //#define ATMEGA328P
 	//#define ATTINY44
 
 	/* Temperatursensor Auswahl */
@@ -55,7 +55,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 //	Header-Dateien:
 // ----------------------------------------------------------------------------//
 
-	#include <avr\io.h>					//AVR Register und Konstantendefinitionen
+	#include <avr\io.h>						//AVR Register und Konstantendefinitionen
 	#include <avr\interrupt.h>				//AVR Interrupt Vektoren
 	#include <avr\portpins.h>				//Definierte Port Beschriftungen
 	#include <util\delay.h>					//Wartezeit Schleife
@@ -63,10 +63,10 @@ Der Verwendete Mikroprozessor dieses Projektes:
 
 	#include "onewire.h"					//1-Wire Bus für Temp. Sensor DS18B20
 	#include "temp_ds18b20.h"				//Temperatur Sensor DS18B20
-    	#include "temp_mcp9700.h"                              	//Temperatur Sensor MCP9700 Funktion
-    	#include "adc_wandler.h"                            	//ADC Wandler
-	#include "fan.h"					//Lüfter Funktionen
-	#include "pwm.h"					//Timer (PWM) Funktion
+   	#include "temp_mcp9700.h"              	//Temperatur Sensor MCP9700 Funktion
+   	#include "adc_wandler.h"               	//ADC Wandler
+	#include "fan.h"						//Lüfter Funktionen
+	#include "pwm.h"						//Timer (PWM) Funktion
 
 	//#include <avr\pgmspace.h>				//LCD benötigt
 	//#include <stdint.h>					//Strings
