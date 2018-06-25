@@ -29,23 +29,14 @@ Sowie Funktionsprototypen für temp.c.
 // 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
-    #define LAT_DQ          LATAbits.LA7
-    #define DQ              PORTAbits.RA7
-    #define TRIS_DQ         TRISAbits.TRISA7
+    #define TEMP_DS_DDR		DDRB	    //DDR festlegen
+	#define TEMP_DS_PORT	PORTB	    //Port festlegen
+	#define TEMP_DS_PIN		PB4		    //Pin festlegen
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-    extern uint8_t ds18b20 [9];
-
-    uint8_t ow_mri (void);
-    uint8_t ow_rd_bit (void);
-    uint8_t ow_rd_byte (void);
-
-    void ow_wr_bit (uint8_t val);
-    void ow_wr_byte (uint8_t val);
-    void ow_skip_rom (void);
     
 // ----------------------------------------------------------------------------//
 // 	Ende
