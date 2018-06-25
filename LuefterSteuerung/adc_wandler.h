@@ -42,9 +42,6 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 	#define AREF_REFERENZ 0					//AREF als Referenz
 	#define AVCC_REFERENZ 1					//AVcc als Referenz with external capacitor at AREF pin
 	#define INTERN_REFERENZ 2				//Internal 1.1V als Referenz
-    	#define ATTINY13
-    	//#define ATMEGA328P
-    	//#define ATTINY44
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
