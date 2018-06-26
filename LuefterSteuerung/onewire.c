@@ -28,7 +28,7 @@ Beschreibung:
 unsigned char OneWireInit()					//Init one wire bus
 {
 	unsigned char Response = 0;
-	char sreg_tmp = SREG;					//Store status register
+	unsigned char sreg_tmp = SREG;			//Store status register
 	
 	cli();									//Deaktivieren der Interrupts
 
