@@ -146,10 +146,10 @@
     <Compile Include="pwm.h">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="temp_ds18b20.c">
+    <Compile Include="temp_ds18x20.c">
       <SubType>compile</SubType>
     </Compile>
-    <Compile Include="temp_ds18b20.h">
+    <Compile Include="temp_ds18x20.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="temp_mcp9700.c">

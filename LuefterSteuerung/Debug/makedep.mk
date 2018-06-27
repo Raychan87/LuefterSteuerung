@@ -10,7 +10,7 @@ main.c
 
 pwm.c
 
-temp_ds18b20.c
+temp_ds18x20.c
 
 temp_mcp9700.c
 

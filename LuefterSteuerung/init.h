@@ -61,7 +61,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 	#include <util\delay.h>					//Wartezeit Schleife
 	//#include <stdint-gcc.h>					//
 
-	#include "temp_ds18b20.h"				//Temperatur Sensor DS18B20
+	#include "temp_ds18x20.h"				//Temperatur Sensor DS18X20
    	#include "temp_mcp9700.h"              	//Temperatur Sensor MCP9700 Funktion
    	#include "adc_wandler.h"               	//ADC Wandler
 	#include "fan.h"						//Lüfter Funktionen

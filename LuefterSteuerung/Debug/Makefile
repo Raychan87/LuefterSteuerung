@@ -41,7 +41,7 @@ C_SRCS +=  \
 ../fan.c \
 ../main.c \
 ../pwm.c \
-../temp_ds18b20.c \
+../temp_ds18x20.c \
 ../temp_mcp9700.c
 
 
@@ -56,7 +56,7 @@ adc_wandler.o \
 fan.o \
 main.o \
 pwm.o \
-temp_ds18b20.o \
+temp_ds18x20.o \
 temp_mcp9700.o
 
 OBJS_AS_ARGS +=  \
@@ -64,7 +64,7 @@ adc_wandler.o \
 fan.o \
 main.o \
 pwm.o \
-temp_ds18b20.o \
+temp_ds18x20.o \
 temp_mcp9700.o
 
 C_DEPS +=  \
@@ -72,7 +72,7 @@ adc_wandler.d \
 fan.d \
 main.d \
 pwm.d \
-temp_ds18b20.d \
+temp_ds18x20.d \
 temp_mcp9700.d
 
 C_DEPS_AS_ARGS +=  \
@@ -80,7 +80,7 @@ adc_wandler.d \
 fan.d \
 main.d \
 pwm.d \
-temp_ds18b20.d \
+temp_ds18x20.d \
 temp_mcp9700.d
 
 OUTPUT_FILE_PATH +=libLuefterSteuerung.a
@@ -125,7 +125,7 @@ LINKER_SCRIPT_DEP+=
 	@echo Finished building: $<
 	
 
-./temp_ds18b20.o: .././temp_ds18b20.c
+./temp_ds18x20.o: .././temp_ds18x20.c
 	@echo Building file: $<
 	@echo Invoking: AVR/GNU C Compiler : 5.4.0
 	$(QUOTE)C:\Program Files (x86)\Atmel\Studio\7.0\toolchain\avr8\avr8-gnu-toolchain\bin\avr-gcc.exe$(QUOTE)  -x c -funsigned-char -funsigned-bitfields -DDEBUG  -I"C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.172\include"  -O1 -ffunction-sections -fdata-sections -fpack-struct -fshort-enums -g2 -Wall -mmcu=attiny13 -B "C:\Program Files (x86)\Atmel\Studio\7.0\Packs\Atmel\ATtiny_DFP\1.3.172\gcc\dev\attiny13" -c -std=gnu99 -MD -MP -MF "$(@:%.o=%.d)" -MT"$(@:%.o=%.d)" -MT"$(@:%.o=%.o)"   -o "$@" "$<" 
