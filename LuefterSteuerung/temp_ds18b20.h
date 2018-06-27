@@ -32,13 +32,24 @@ Sowie Funktionsprototypen für temp.c.
     #define TEMP_DS_DDR			DDRB			//DDR festlegen
     #define TEMP_DS_PORT		PORTB			//Port festlegen
     #define TEMP_DS_PIN			PB4				//Pin festlegen
-    #define TEMP_DS_PIN_MASK    0b00001000		//Pin Maske festlegen
+	#define TEMP_DS_PIN_GROUP	PINB			//PIN Gruppe festlegen
 	
+	 //#define TEMP_DS_PIN_MASK    0b00001000		//Pin Maske festlegen
+	 
+	 #define LAT_DQ          LATAbits.LA7
+	 #define DQ              PORTAbits.RA7
+	 #define TRIS_DQ         TRISAbits.TRISA7
 	
-	#define LAT_DQ          LATAbits.LA7
-	#define DQ              PORTAbits.RA7
-	#define TRIS_DQ         TRISAbits.TRISA7
-		
+// ----------------------------------------------------------------------------//
+// 	Macros
+// ----------------------------------------------------------------------------//	
+	
+	#define TEMP_DS_PIN_OUTPUT		TEMP_DS_DDR |= (1 << TEMP_DS_PIN);	//PIN als Ausgang schalten
+	#define TEMP_DS_PIN_INPUT		TEMP_DS_DDR &= ~(1 << TEMP_DS_PIN);	//PIN als Eingang schalten
+	#define TEMP_DS_PIN_SET_LOW		TEMP_DS_PORT &= ~(1 << TEMP_DS_PIN);//Ausgang auf Low setzen
+	#define TEMP_DS_PIN_SET_HIGH	TEMP_DS_PORT |= (1 << TEMP_DS_PIN); //Ausgang auf High setzen
+	#define TEMP_DS_PIN_READING		TEMP_DS_PIN_GROUP & (1 << TEMP_DS_PIN);//Pin auslesen
+			
 // ----------------------------------------------------------------------------//
 // 	Globale Variablen
 // ----------------------------------------------------------------------------//
@@ -49,10 +60,10 @@ Sowie Funktionsprototypen für temp.c.
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-	unsigned char ow_mri (void);
+	uint8_t OneWire_MasterResetImpuls (void);
 	unsigned char ow_rd_bit (void);
 	unsigned char ow_rd_byte (void);
-	void ow_wr_bit (uint8_t val);
+	void OneWire_SendeBit (uint8_t value)
 	void ow_wr_byte (uint8_t val);
 	void ow_skip_rom (void);
 

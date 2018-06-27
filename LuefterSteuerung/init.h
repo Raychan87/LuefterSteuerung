@@ -59,9 +59,8 @@ Der Verwendete Mikroprozessor dieses Projektes:
 	#include <avr\interrupt.h>				//AVR Interrupt Vektoren
 	#include <avr\portpins.h>				//Definierte Port Beschriftungen
 	#include <util\delay.h>					//Wartezeit Schleife
-	//#include <inttypes.h>					//
+	//#include <stdint-gcc.h>					//
 
-	#include "onewire.h"					//1-Wire Bus für Temp. Sensor DS18B20
 	#include "temp_ds18b20.h"				//Temperatur Sensor DS18B20
    	#include "temp_mcp9700.h"              	//Temperatur Sensor MCP9700 Funktion
    	#include "adc_wandler.h"               	//ADC Wandler

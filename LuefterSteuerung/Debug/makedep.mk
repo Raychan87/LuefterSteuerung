@@ -8,8 +8,6 @@ fan.c
 
 main.c
 
-onewire.c
-
 pwm.c
 
 temp_ds18b20.c

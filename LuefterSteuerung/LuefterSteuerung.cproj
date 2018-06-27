@@ -32,15 +32,15 @@
     <EraseKey />
     <AsfFrameworkConfig>
       <framework-data>
-  <options />
-  <configurations />
-  <files />
-  <documentation help="" />
-  <offline-documentation help="" />
-  <dependencies>
-    <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.36.1" />
-  </dependencies>
-</framework-data>
+        <options />
+        <configurations />
+        <files />
+        <documentation help="" />
+        <offline-documentation help="" />
+        <dependencies>
+          <content-extension eid="atmel.asf" uuidref="Atmel.ASF" version="3.36.1" />
+        </dependencies>
+      </framework-data>
     </AsfFrameworkConfig>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)' == 'Release' ">
@@ -138,12 +138,6 @@
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="main.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="onewire.c">
-      <SubType>compile</SubType>
-    </Compile>
-    <Compile Include="onewire.h">
       <SubType>compile</SubType>
     </Compile>
     <Compile Include="pwm.c">

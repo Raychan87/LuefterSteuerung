@@ -17,61 +17,69 @@ In dem File befinden sich die Funktionen für den DS18b20 Sensor.
 	#include "temp_ds18b20.h"
 
 // ----------------------------------------------------------------------------//
-//							uint8_t ow_mri (void)
+//					uint8_t OneWire_MasterResetImpuls (void)
 // ----------------------------------------------------------------------------//
 //	* Übergabeparameter: -
-//	* Rückgabewert	   : -
+//	* Rückgabewert	   : 1 = mindesens ein Sensor am PIN / 0 = kein Sensor am Pin
 //
 //	* Beschreibung:
 //
-//	One_Wire_Master-Reset-Impuls
-//	This function will release the master reset impuls and checks if there is at
-//  least one 1-wire-component connected to the bus (0) or not (1).
+//	Der Master zieht den Bus auf Low für mindestens 480us. Der DS18x20 wartet
+//	nun 15-60us ab um seine Antwort zu geben. Wenn 15-60us verstrichen sind
+//	zieht der DS18x20 für 60-240us den Bus auf Low. Damit weiß der Master das
+//	Mindestens ein Sensor angeschlossen ist.
 // ----------------------------------------------------------------------------//
 
-uint8_t ow_mri (void)
-{
-	uint8_t rec;
-
-	LAT_DQ = 0;						// set the (I)O to low level
-	TRIS_DQ = 0;                    // config the DQ-IO as output (-> low)
-	__delay_us(490);				// delay of >480 us
-	TRIS_DQ = 1;                    // config the  DQ-IO as input (high-z -> pull up)
-	__delay_us(40);
-	rec = DQ;                       // read the level (if low, slave available)
-	__delay_us(450);                // wait for end of slot
-
-	return (rec);
-}
-
-// ----------------------------------------------------------------------------//
-//						void ow_wr_bit (uint8_t val)
-// ----------------------------------------------------------------------------//
-//	* Übergabeparameter: -
-//	* Rückgabewert	   : -
-//
-//	* Beschreibung:
-//
-//	One_Wire_Write_Bit
-//	This function will write one single bit on the bus.
-// ----------------------------------------------------------------------------//
-
-void ow_wr_bit (uint8_t val)
-{
-	LAT_DQ = 0;						// set the (I)O to low level
-	TRIS_DQ = 0;                    // config the DQ-IO as output (-> low)
-
-	if(val)                    		// if the bit to transfer is a "1"
+	uint8_t OneWire_MasterResetImpuls (void)
 	{
-		__delay_us(1);				// wait 1 us and..
-		TRIS_DQ = 1;                // ..config the  DQ-IO as input (high-z -> pull up)
+		uint8_t request;
+	
+		TEMP_DS_PIN_SET_LOW					//Ausgang auf Low setzen
+		TEMP_DS_PIN_OUTPUT					//PIN als Ausgang schalten
+		
+		_delay_us(490);						//Mindestens 480us warten
+		
+		TEMP_DS_PIN_SET_HIGH				//PIN auf High setzen
+		TEMP_DS_PIN_INPUT					//PIN als Eingang schalten
+		
+		_delay_us(40);						//DS18B20 wartet nach High auf Bus 15-60us ab
+		
+		request = TEMP_DS_PIN_READING		//Speichern des Signals		
+		
+		_delay_us(450);						//Warten auf das Ende der Komunikation
+	
+		return (request);
 	}
 
-	__delay_us(100);                // wait for end of slot
+// ----------------------------------------------------------------------------//
+//						void OneWire_SendeBit (uint8_t value)
+// ----------------------------------------------------------------------------//
+//	* Übergabeparameter: Bei High wird ein Bit gesendet.
+//	* Rückgabewert	   : -
+//
+//	* Beschreibung:
+//
+//	
+//	Die Funktion schreibt ein Bit auf dem BUS.
+// ----------------------------------------------------------------------------//
 
-	TRIS_DQ = 1;                    // config the  DQ-IO as input (high-z -> pull up)
-}
-
+	void OneWire_SendeBit (uint8_t value)
+	{
+		TEMP_DS_PIN_SET_LOW				//Ausgang auf Low setzen
+		TEMP_DS_PIN_OUTPUT				//PIN als Ausgang schalten
+	
+		if(value)
+		{
+			_delay_us(1);				//warte 1us und...
+			TEMP_DS_PIN_SET_HIGH		//PIN auf High setzen
+			TEMP_DS_PIN_INPUT			//PIN als Eingang schalten
+		}
+		
+		_delay_us(100);					//Warten auf das Ende der Übertragung
+	
+		TEMP_DS_PIN_SET_HIGH			//PIN auf High setzen
+		TEMP_DS_PIN_INPUT				//PIN als Eingang schalten	
+	}
 
 // ----------------------------------------------------------------------------//
 //						void ow_wr_byte (uint8_t val)
