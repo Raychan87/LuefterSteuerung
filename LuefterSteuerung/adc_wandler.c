@@ -1,9 +1,14 @@
 /********************************************************************************
  ADC_Wandler Funktion
 *********************************************************************************
-File:
-Version: 1.6
-Author: RayChan
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: adc_wandler.c
+Version		: 1.6
+Status		: in testing
+
 Beschreibung:
 
 Die Datei enthält die Funktionen der ADC-Routine.

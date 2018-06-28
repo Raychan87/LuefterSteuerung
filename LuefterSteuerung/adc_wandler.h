@@ -1,10 +1,13 @@
 /********************************************************************************
  ADC_Wandler Funktion
 *********************************************************************************
-File: adc_wandler.h
-Version: 1.6
-Author: RayChan
-Beschreibung:
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: adc_wandler.h
+Version		: 1.6
+Status		: in testing
 
 Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 
@@ -39,9 +42,9 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 // 	Definition:
 // ----------------------------------------------------------------------------//
 
-	#define AREF_REFERENZ 0					//AREF als Referenz
-	#define AVCC_REFERENZ 1					//AVcc als Referenz with external capacitor at AREF pin
-	#define INTERN_REFERENZ 2				//Internal 1.1V als Referenz
+	#define AREF_REFERENZ		0				//AREF als Referenz
+	#define AVCC_REFERENZ		1				//AVcc als Referenz with external capacitor at AREF pin
+	#define INTERN_REFERENZ		2				//Internal 1.1V als Referenz
 
 // ----------------------------------------------------------------------------//
 // 	Funktions Prototypen:
@@ -53,7 +56,7 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 		1 = AVcc als Referenz mit externen Kondensator am AREF pin
 		2 = Internal 1.1V als Referenz
 	*/
-	unsigned int ADC_lesen(unsigned char Kanal);	//Gibt den Analogenwert als INT-Wert zurück
+	unsigned int ADC_lesen(unsigned char Kanal);//Gibt den Analogenwert als INT-Wert zurück
 	/* Kanal:
 		ADC Pin angeben
 	*/

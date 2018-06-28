@@ -1,11 +1,14 @@
-
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp_ds18x20.h
-Version: 0.3
-Author: RayChan
-Für: Temperatur Sensor DS18x20
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: temp_ds18x20.h
+Version		: 0.3
+Status		: in build
+
 Beschreibung:
 
 Hier werden für den Sensor DS18x20 alle benötigten Funktionen declariert sowie
@@ -43,8 +46,6 @@ Read Power Supply 	| Signalisiert den Versorgungszustand zum PIC 					| 0xB4
     #define TEMP_DS_PIN			PB4				//Pin festlegen
 	#define TEMP_DS_PIN_GROUP	PINB			//PIN Gruppe festlegen
 	
-	#define CLEAR				0
-		
 // ----------------------------------------------------------------------------//
 // 	Macros
 // ----------------------------------------------------------------------------//	
@@ -71,7 +72,7 @@ Read Power Supply 	| Signalisiert den Versorgungszustand zum PIC 					| 0xB4
 	void OneWire_TransmitBit (uint8_t TransmitBit);		//Senden eines Bits
 	void OneWire_TransmitByte (uint8_t TransmitByte);	//Senden eines Bytes
 	void OneWire_Skip_Rom(void);						//Skip Rom
-	void OneWire_adr_reading(void);
+	void OneWire_adr_reading(void);						//nicht fertig!!!
 
 // ----------------------------------------------------------------------------//
 // 	Ende

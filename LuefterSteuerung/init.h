@@ -1,11 +1,19 @@
 /********************************************************************************
- Lüfter Steuerung
+Projekt	: Temperatur geregelte Lüftersteuerung
 *********************************************************************************
-File: init.h
-Version: 0.4
-Author: RayChan
-Beschreibung:
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
 
+MCU			: ATtiny13
+F_OSC		: 16.000 MHz
+IDE			: Atmel Studio 7
+
+File		: init.h
+Version		: 0.5
+Status		: in Build
+
+Beschreibung:
 
 Der Verwendete Mikroprozessor dieses Projektes:
 // ----------------------------------------------------------------------------
@@ -16,6 +24,17 @@ Der Verwendete Mikroprozessor dieses Projektes:
 // RAM: 64 Bytes
 // EEPROM: 64 Bytes
 // ----------------------------------------------------------------------------
+
+/* Pin Belegung des ATtiny13-20PU:
+// ----------------------------------------------------------------------------
+									 --|--|--
+10k gegen GND			Reset	PB5	-|1    8|- VCC	                5V
+Ózilator       			ADC3	PB3	-|		|- PB2	ADC1    Prog.   Lüfter(Spg.)
+Lüfter (Drehzahl)      	ADC2	PB4	-|		|- PB1	MISO	Prog.	DS18B20
+Masse				        	GND	-|4	   5|- PB0	MOSI
+									 --------								   */
+
+
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
@@ -31,19 +50,21 @@ Der Verwendete Mikroprozessor dieses Projektes:
 
 	#define F_CPU				16000000	//CPU Takt: 16MHz
 	//#define BAUDRATE			9600		//Baudrate
-
-// ----------------------------------------------------------------------------//
-// Definition:
-// ----------------------------------------------------------------------------//
 	
 	//Mikrocontroller Auswahl (Nur ein MC auswählen!!!)
 	#define ATTINY13
-    //#define ATMEGA328P
+	//#define ATMEGA328P
 	//#define ATTINY44
 
 	/* Temperatursensor Auswahl */
 	#define DS18B20
 	#define MCP9700
+
+// ----------------------------------------------------------------------------//
+// Definition:
+// ----------------------------------------------------------------------------//
+
+	#define CLEAR				0
 
 // ----------------------------------------------------------------------------//
 //	Globale Variablen:

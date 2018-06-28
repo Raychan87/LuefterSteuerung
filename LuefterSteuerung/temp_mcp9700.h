@@ -1,10 +1,13 @@
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp_mcp9700.h
-Version: 1.1
-Author: RayChan
-Beschreibung:
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: mcp9700.h
+Version		: 1.1
+Status		: in testing
 
 Hier werden die Temperatur Sensorpins und die Analoge Referenzspannung angegeben.
 Sowie Funktionsprototypen für temp.c.

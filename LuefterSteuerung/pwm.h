@@ -1,9 +1,14 @@
 /********************************************************************************
 PWM Funktion
 *********************************************************************************
-File: PWM.h
-Version: 0.1
-Author: RayChan
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: pwm.c
+Version		: 0.1
+Status		: in build
+
 Beschreibung:
 
 Hier wird der Timer eingestellt und ein PWM Signal erzeugt.
@@ -23,7 +28,7 @@ Hier wird der Timer eingestellt und ein PWM Signal erzeugt.
 	#include "init.h"
 
 // ----------------------------------------------------------------------------//
-//	Header-Dateien:
+// 	Definition (Einstellungen):
 // ----------------------------------------------------------------------------//
 
 
@@ -37,4 +42,5 @@ Hier wird der Timer eingestellt und ein PWM Signal erzeugt.
 // ----------------------------------------------------------------------------//
 // 	Ende
 // ----------------------------------------------------------------------------//
+
 #endif /* PWM_H_ */

@@ -1,10 +1,14 @@
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp_ds18x20.c
-Version: 0.3
-Author: RayChan
-Für: Temperatur Sensor ds18x20
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: temp_ds18x20.c
+Version		: 0.3
+Status		: in build
+
 Beschreibung:
 
 In dem File befinden sich die Funktionen für den ds18x20 Sensor.
@@ -187,7 +191,7 @@ In dem File befinden sich die Funktionen für den ds18x20 Sensor.
 //
 //	* Beschreibung:
 //
-//	
+//	Unfertige Funktion!
 // ----------------------------------------------------------------------------//
 
 	void OneWire_adr_reading(void)

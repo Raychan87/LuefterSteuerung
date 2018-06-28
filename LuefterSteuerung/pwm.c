@@ -1,9 +1,14 @@
 /********************************************************************************
 PWM Funktion
 *********************************************************************************
-File: pwm.c
-Version: 0.1
-Author: RayChan
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: pwm.c
+Version		: 0.1
+Status		: in build
+
 Beschreibung:
 
 ********************************************************************************/
