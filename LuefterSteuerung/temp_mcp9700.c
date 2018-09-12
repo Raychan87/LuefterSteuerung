@@ -1,10 +1,13 @@
 /********************************************************************************
 Temperatur Funktion
 *********************************************************************************
-File: temp_mcp9700.c
-Version: 1.1
-Author: RayChan
-Beschreibung:
+Author		: RayChan
+WebSeite	: https://FotoTour-und-Technik.de
+GitHub		: https://github.com/Raychan87
+
+File		: temp_mcp9700.c
+Version		: 1.1
+Status		: in testing
 
 In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 ********************************************************************************/
