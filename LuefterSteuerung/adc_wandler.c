@@ -37,7 +37,7 @@ Für ATmega328P, ATtiny44 und ATtiny13
 //
 // ----------------------------------------------------------------------------//
 
-	void adc_init( unsigned char referenzspg)
+	void adc_init(unsigned char referenzspg)
 	{
         #ifdef ATMEGA328P
 		   if (referenzspg == AREF_REFERENZ)
@@ -93,7 +93,7 @@ Für ATmega328P, ATtiny44 und ATtiny13
 	}
 
 // ----------------------------------------------------------------------------//
-//				unsigned char ADC_lesen(unsigned char Kanal)
+//				unsigned char adc_read(unsigned char Kanal)
 // ----------------------------------------------------------------------------//
 //	* Übergabeparameter: Der Kanal ist der ADC PIN als Ziffer welcher Analog
 //			     eingelesen werden soll.
@@ -109,7 +109,7 @@ Für ATmega328P, ATtiny44 und ATtiny13
 // ----------------------------------------------------------------------------//
 
 
-	unsigned int ADC_lesen(unsigned char Kanal)		//aus bestimmten Kanal (ADC PIN) Analogwert auslesen
+	unsigned int adc_read(unsigned char Kanal)		//aus bestimmten Kanal (ADC PIN) Analogwert auslesen
 	{
         #ifdef ATMEGA328P
 		    ADMUX = (ADMUX & ~(0x1F)) | (Kanal & 0x1F);	//Kanal waehlen

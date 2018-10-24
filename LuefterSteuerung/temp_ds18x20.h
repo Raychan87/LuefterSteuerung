@@ -66,11 +66,11 @@ Read Power Supply 	| Signalisiert den Versorgungszustand zum PIC 					| 0xB4
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-	uint8_t OneWire_MasterResetImpuls (void);			//Beginn der Kommunikation
-	uint8_t OneWire_ReceiveBit (void);					//Empfangen eines Bits
-	uint8_t OneWire_RecevieByte (void);					//Empfangen eines Bytes
-	void OneWire_TransmitBit (uint8_t TransmitBit);		//Senden eines Bits
-	void OneWire_TransmitByte (uint8_t TransmitByte);	//Senden eines Bytes
+	uint8_t OneWire_MasterResetImpuls(void);			//Beginn der Kommunikation
+	uint8_t OneWire_ReceiveBit(void);					//Empfangen eines Bits
+	uint8_t OneWire_RecevieByte(void);					//Empfangen eines Bytes
+	void OneWire_TransmitBit(uint8_t TransmitBit);		//Senden eines Bits
+	void OneWire_TransmitByte(uint8_t TransmitByte);	//Senden eines Bytes
 	void OneWire_Skip_Rom(void);						//Skip Rom
 	void OneWire_adr_reading(void);						//nicht fertig!!!
 

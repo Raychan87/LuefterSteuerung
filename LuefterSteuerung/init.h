@@ -32,9 +32,7 @@ Der Verwendete Mikroprozessor dieses Projektes:
 Ózilator       			ADC3	PB3	-|		|- PB2	ADC1    Prog.   Lüfter(Spg.)
 Lüfter (Drehzahl)      	ADC2	PB4	-|		|- PB1	MISO	Prog.	DS18B20
 Masse				        	GND	-|4	   5|- PB0	MOSI
-									 --------								   */
-
-
+									 --------								   
 ********************************************************************************/
 
 // ----------------------------------------------------------------------------//
