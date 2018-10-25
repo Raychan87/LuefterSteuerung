@@ -22,9 +22,10 @@ Für ATmega328P, ATtiny44 und ATtiny13
 	#include "pwm.h"
 	
 // ----------------------------------------------------------------------------//
-//							void pwm_init ( pwm_mode )	
+//		void pwm_init (unsigned char pwm_mode, unsigned char output_channel)
 // ----------------------------------------------------------------------------//
 //	* Übergabeparameter: Auswahl des PWM Mode. Ob Fast PWM oder Pahse correct.
+//						 Auswahl welcher PIN benutzt wird.
 //	* Rückgabewert	   : -
 //
 //	* Beschreibung:		
@@ -34,67 +35,180 @@ Für ATmega328P, ATtiny44 und ATtiny13
 //
 //		Die Frequenz wie schnell die Periode ist:
 //		f = Taktfrequenz/(2 * Prescaler * 256) in Hz
+//
+//		output_channel
+//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B / 5 = OCR2A / 6 = OCR2B
+//
 // ----------------------------------------------------------------------------//
 
-	void pwm_init (unsigned char pwm_mode)
+	void pwm_init (unsigned char pwm_mode, unsigned char output_channel)
 	{
 		#ifdef ATMEGA328P			
-			PWM_PIN_SET_OUTPUT							//PIN als Ausgang schalten
-			PWM_PIN_SET_HIGH							//PIN auf High setzen
-
-			if (mode == FASTPWM_8BIT)
+			switch (output_channel)
 			{
-				TCCR1A |= (1<<WGM10) | (1<<WGM12) | (1<<COM1A1); //fast PWM, 8-Bit | nicht invertierter modus
-				TCCR1B |= (1<<CS11) | (1<<CS10);		//Prescaer 64 = Enable Counter
-				OCR1A = 256; 							//Duty Cycle auf 100%
+				//OCR0A auf PIN D6
+				case 1: DDRD |= (1 << PD6);					//PIN als Ausgang schalten
+						OCR0A = 128;						//DutyCycle auf 50%
+						if (mode == FASTPWM_8BIT)
+						{
+							TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+							TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+							TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+						}
+						if (mode == PHASECORRECT_8BIT)
+						{
+							TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+							TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+							TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+						}	
+						break;
+				//OCR0B auf PIN D5					
+				case 2: DDRD |= (1 << PD5);					//PIN als Ausgang schalten
+						OCR0A = 128;						//DutyCycle auf 50%
+						if (mode == FASTPWM_8BIT)
+						{
+							TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+							TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+							TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+						}
+						if (mode == PHASECORRECT_8BIT)
+						{
+							TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+							TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+							TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+						}
+						break;
+				//OCR1A auf PIN B1
+				case 3:	DDRB |= (1 << PB1);					//PIN als Ausgang schalten
+						OCR1A = 128;						//DutyCycle auf 50%
+						if (mode == FASTPWM_8BIT)
+						{
+							TCCR1A = (1 << COM1A1);			//nicht Invertierter Modus
+							TCCR1B |= (1 << WGM12)|(1 << WGM10);//fast PWM Mode
+							TCCR1B = (1 << CS11);			//Prescaler auf 8 und PWM startet
+						}
+						if (mode == PHASECORRECT_8BIT)
+						{
+							TCCR1A = (1 << COM1A1);			//nicht Invertierter Modus
+							TCCR1B |= (1 << WGM10);			//PWM Phase Corrected Mode
+							TCCR1B = (1 << CS11);			//Prescaler auf 8 und PWM startet
+						}
+						break;
+				//OCR1B auf PIN B2
+				case 4: DDRB |= (1 << PB2);					//PIN als Ausgang schalten
+						OCR1B = 128;						//DutyCycle auf 50%
+						if (mode == FASTPWM_8BIT)
+						{
+							TCCR1A = (1 << COM1B1);			//nicht Invertierter Modus
+							TCCR1B |= (1 << WGM12)|(1 << WGM10);//fast PWM Mode
+							TCCR1B = (1 << CS11);			//Prescaler auf 8 und PWM startet
+						}
+						if (mode == PHASECORRECT_8BIT)
+						{
+							TCCR1A = (1 << COM1B1);			//nicht Invertierter Modus
+							TCCR1B |= (1 << WGM10);			//PWM Phase Corrected Mode
+							TCCR1B = (1 << CS11);			//Prescaler auf 8 und PWM startet
+						}
+						break;
 			}
-			if (mode == PHASECORRECT_8BIT)
-			{
-				TCCR1A = (1<<WGM10) | (1<<COM1A1); 		//PWM Phase correct, 8-Bit
-				TCCR1B = (1<<CS11) | (1<<CS10); 		//Prescaer 64 = Enable Counter
-				OCR1A = 256; 							//Duty Cycle auf 100%
-			}		
 		#endif
 
 		#ifdef ATTINY44
-			PWM_PIN_SET_OUTPUT							//PIN als Ausgang schalten
-			PWM_PIN_SET_HIGH							//PIN auf High setzen
-
-			if (mode == FASTPWM_8BIT)
-			{
-				TCCR0A |= (1<<WGM00) | (1<<WGM01) | (1<<COM0A1); //fast PWM, 8-Bit | nicht invertierter modus
-				TCCR0B |= (1<<CS00) | (1<<CS01);		//Prescaer 64 = Enable Counter
-				OCRA = 256; 							//Duty Cycle auf 100%
-			}
-			if (mode == PHASECORRECT_8BIT)
-			{
-				TCCR0A |= (1<<WGM00) | (1<<COM0A1); 	//PWM Phase correct, 8-Bit
-				TCCR0B |= (1<<CS00) | (1<<CS01); 		//Prescaer 64 = Enable Counter
-				OCRA = 256; 							//Duty Cycle auf 100%
-			}
+			switch (output_channel)
+				{
+					//OCR0A auf PIN B2
+					case 1: DDRB |= (1 << PB2);					//PIN als Ausgang schalten
+							OCR0A = 128;						//DutyCycle auf 50%
+							if (mode == FASTPWM_8BIT)
+							{
+								TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							if (mode == PHASECORRECT_8BIT)
+							{
+								TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}	
+							break;
+					//OCR0B auf PIN PA7					
+					case 2: DDRA |= (1 << PA7);					//PIN als Ausgang schalten
+							OCR0A = 128;						//DutyCycle auf 50%
+							if (mode == FASTPWM_8BIT)
+							{
+								TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							if (mode == PHASECORRECT_8BIT)
+							{
+								TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							break;
+					//OCR1B auf PIN PA5
+					case 4: DDRA |= (1 << PA5);					//PIN als Ausgang schalten
+							OCR1B = 128;						//DutyCycle auf 50%
+							if (mode == FASTPWM_8BIT)
+							{
+								TCCR1A = (1 << COM1B1);			//nicht Invertierter Modus
+								TCCR1A |= (1 << WGM10);			//fast PWM Mode
+								TCCR1B = (1 << WGM12);
+								TCCR1B |= (1 << CS11);			//Prescaler auf 8 und PWM startet
+							}
+							if (mode == PHASECORRECT_8BIT)
+							{
+								TCCR1A = (1 << COM1B1);			//nicht Invertierter Modus
+								TCCR1A |= (1 << WGM10);			//PWM Phase Corrected Mode
+								TCCR1B = (1 << CS11);			//Prescaler auf 8 und PWM startet
+							}
+							break;
+				}
 		#endif
 
 		#ifdef ATTINY13
-			PWM_PIN_SET_OUTPUT							//PIN als Ausgang schalten
-			PWM_PIN_SET_HIGH							//PIN auf High setzen
-
-			if (mode == FASTPWM_8BIT)
-			{
-				TCCR0A |= (1<<WGM0) | (1<<WGM1) | (1<<COM01); //fast PWM, 8-Bit | nicht invertierter modus
-				TCCR0B |= (1<<CS00) | (1<<CS01);		//Prescaer 64 = Enable Counter
-				OCRA = 256; 							//Duty Cycle auf 100%
-			}
-			if (mode == PHASECORRECT_8BIT)
-			{
-				TCCR0A |= (1<<WGM0) | (1<<COM01); 	//PWM Phase correct, 8-Bit
-				TCCR0B |= (1<<CS00) | (1<<CS01); 		//Prescaer 64 = Enable Counter
-				OCRA = 256; 							//Duty Cycle auf 100%
-			}
+			switch (output_channel)
+				{
+					//OCR0A auf PIN B0
+					case 1: DDRB |= (1 << PB0);					//PIN als Ausgang schalten
+							OCR0A = 128;						//DutyCycle auf 50%
+							if (mode == FASTPWM_8BIT)
+							{
+								TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							if (mode == PHASECORRECT_8BIT)
+							{
+								TCCR0A = (1 << COM0A1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}	
+							break;
+					//OCR0B auf PIN PB1					
+					case 2: DDRB |= (1 << PB1);					//PIN als Ausgang schalten
+							OCR0A = 128;						//DutyCycle auf 50%
+							if (mode == FASTPWM_8BIT)
+							{
+								TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM01) | (1 << WGM00);//fast PWM Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							if (mode == PHASECORRECT_8BIT)
+							{
+								TCCR0A = (1 << COM0B1);			//nicht Invertierter Modus
+								TCCR0A |= (1 << WGM00);			//PWM Phase Corrected Mode
+								TCCR0B = (1 << CS01);			//Prescaler auf 8 und PWM startet
+							}
+							break;
+				}
 		#endif
 	}
 
 // ----------------------------------------------------------------------------//
-//					void pwm_output ( unsigned char duty_cycle )	
+//	void pwm_output (unsigned char duty_cycle unsigned char output_channel)	
 // ----------------------------------------------------------------------------//
 //	* Übergabeparameter: duty_cycle in Prozent (50% Rechtecksignal)
 //	* Rückgabewert	   : -
@@ -104,16 +218,51 @@ Für ATmega328P, ATtiny44 und ATtiny13
 //		Erzeugen eines Rechtecksignals.
 //		Formel für die Umwandlung der DutyCycle:
 //		Vout = duty / 255 * 5V
+//
+//		output_channel
+//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B / 5 = OCR2A / 6 = OCR2B	
 // ----------------------------------------------------------------------------//
 
-	void pwm_output (unsigned char duty_cycle)
+	void pwm_output (unsigned char duty_cycle unsigned char output_channel)
 	{
+		unsigned char OCR;
+
+		OCR = (255 * duty_cycle) / 100;	//Umrechnung von Prozent in DEZ-Wert
+
 		#ifdef ATMEGA328P
-			OCR1A = (255 * duty_cycle) / 100;	//Umrechnung von Prozent in DEZ-Wert
+			switch (output_channel)
+			{
+				case 1: OCR0A = OCR;
+						break;
+				case 2: OCR0B = OCR;
+						break;
+				case 3: OCR1A = OCR;
+						break;
+				case 4: OCR1B = OCR;
+						break;
+			}
 		#endif
 
-		#ifdef ATTINY44 | ATTINY13
-			OCRA = (255 * duty_cycle) / 100;		//Umrechnung von Prozent in DEZ-Wert
+		#ifdef ATTINY44
+			switch (output_channel)
+			{
+				case 1: OCR0A = OCR;
+						break;
+				case 2: OCR0B = OCR;
+						break;
+				case 4: OCR1B = OCR;
+						break;
+			}
+		#endif
+
+		#ifdef ATTINY13
+			switch (output_channel)
+			{
+				case 1: OCR0A = OCR;
+						break;
+				case 2: OCR0B = OCR;
+						break;
+			}
 		#endif
 	}
 
