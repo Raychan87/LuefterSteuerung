@@ -50,14 +50,14 @@ Hier wird der Timer eingestellt und ein PWM Signal erzeugt.
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-	void pwm_init (unsigned char pwm_mode, unsigned char output_channel)//PWM Einstellen
+	extern void pwm_init (unsigned char pwm_mode, unsigned char output_channel)//PWM Einstellen
 	/* 	pwm_mode:
 			0 = FASTPWM_8BIT = Fast PWM mode in 8-Bit
 			1 = PHASECORRECT_8BIT = PWM Phase correct in 8-Bit
 		output_channel:
 			1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B 
 	*/
-	void pwm_output (unsigned char duty_cycle unsigned char output_channel) 	//PWM Signal erzeugen
+	extern void pwm_output (unsigned char duty_cycle unsigned char output_channel) 	//PWM Signal erzeugen
 	/* 	DutyCycle:
 			z.B. 50 = 50% Rechtecksignal
 		output_channel:

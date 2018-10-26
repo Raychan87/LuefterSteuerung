@@ -50,13 +50,13 @@ Hier sind die Difinitionen und Funktionsprototypen für ADC-Routinen.
 // 	Funktions Prototypen:
 // ----------------------------------------------------------------------------//
 
-	void adc_init(unsigned char referenzspg);	//ADC Einschalten und Festlegen der Referenzspg.
+	extern void adc_init(unsigned char referenzspg);	//ADC Einschalten und Festlegen der Referenzspg.
 	/*	referenzspg:
 		0 = AREF als Referenz
 		1 = AVcc als Referenz mit externen Kondensator am AREF pin
 		2 = Internal 1.1V als Referenz
 	*/
-	unsigned int adc_read(unsigned char channel);//Gibt den Analogenwert als INT-Wert zurück
+	extern unsigned int adc_read(unsigned char channel);//Gibt den Analogenwert als INT-Wert zurück
 	/* channel:
 		ADC Pin angeben
 	*/

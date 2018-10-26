@@ -37,7 +37,7 @@ Für ATmega328P, ATtiny44 und ATtiny13
 //		f = Taktfrequenz/(2 * Prescaler * 256) in Hz
 //
 //		output_channel
-//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B / 5 = OCR2A / 6 = OCR2B
+//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B 
 //
 // ----------------------------------------------------------------------------//
 
@@ -220,7 +220,7 @@ Für ATmega328P, ATtiny44 und ATtiny13
 //		Vout = duty / 255 * 5V
 //
 //		output_channel
-//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B / 5 = OCR2A / 6 = OCR2B	
+//		1 = OCR0A / 2 = OCR0B / 3 = OCR1A / 4 = OCR1B 	
 // ----------------------------------------------------------------------------//
 
 	void pwm_output (unsigned char duty_cycle unsigned char output_channel)
