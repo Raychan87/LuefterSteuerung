@@ -60,7 +60,7 @@ In der Datei ist für den Temperaturfühler MCP9700 die benötigten Funktionen
 		for (i = 1; i <= 3 ; i++)			//3 Messwerte einholen
 		{
 			/*	Temperatur auslesen und Formel für genaue Kalibrierung der Temperaturwerte */
-			merker_temp = merker_temp + (((float)ADC_read(TEMP_MCP_PIN)*MCP_VREF/1024)-0.4802)/0.01;	//0.4802
+			merker_temp = merker_temp + (((float)adc_read(TEMP_MCP_PIN)*MCP_VREF/1024)-0.4802)/0.01;	//0.4802
 			_delay_ms(20);					//Kurze Pause
 		}
 		merker_temp = merker_temp / 3;		//Durchschnitt der 3 Temperaturwerte bilden
